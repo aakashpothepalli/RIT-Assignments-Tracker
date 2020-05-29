@@ -1,15 +1,22 @@
 import React from 'react';
 import './App.css';
-import EventCardList from './components/EventCardList';
-import Appbar from './components/Appbar';
+import Home from './Home';
+import {Switch,Route,BrowserRouter as Router} from "react-router-dom"
 
 function App() {
-  return (
-    <div className="App">
-      <Appbar/>
-      <EventCardList/>
-    </div>
-  );
+  
+
+    return (
+      
+        <Switch>
+          
+
+          <Route path= {'/:classCode'} component={Home}/>
+          <Route path= {'/'} component={Home}/>
+
+        </Switch>
+
+    );
 }
 
 export default App;

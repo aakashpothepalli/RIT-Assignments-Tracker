@@ -24,13 +24,13 @@ function Appbar(props) {
 
     return (
         <>
-            <AppBar position="sticky" className = {classes.root}>
-        <Toolbar>
-          <Typography variant="h6" className={classes.title}>
-          RIT Assignments Tracker
-          </Typography>
-        </Toolbar>
-      </AppBar>
+        <AppBar position="sticky" className = {classes.root}>
+            <Toolbar>
+                <Typography variant="h6" className={classes.title}>
+                    RIT Assignments Tracker
+                </Typography>
+            </Toolbar>
+        </AppBar>
         </>
     );
 }
