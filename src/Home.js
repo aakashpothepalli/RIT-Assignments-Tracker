@@ -5,7 +5,6 @@ import Appbar from './components/Appbar';
 import ExamCardList from './components/Exams/ExamCardList';
 
 function Home({match}) {
-    console.log(match.params.classCode)
     return (<> 
     
     <Appbar />

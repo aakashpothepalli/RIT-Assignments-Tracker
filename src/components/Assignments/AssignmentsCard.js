@@ -55,13 +55,11 @@ const useStyles = makeStyles((theme) => ({
 
 export default function AssignmentsCard({
     subjectCode,
-    subjectName,
-    left,
+    title,
     deadline,
-    type,
     submitLink,
-    content,
-    contentLink
+    description,
+    moreDetailsLink
 }) {
     const classes = useStyles();
     const [expanded, setExpanded] = React.useState(false);
@@ -89,7 +87,7 @@ export default function AssignmentsCard({
                     }
                     </Avatar>}
 
-                    title={subjectName}/>
+                    title={title}/>
 
               
                 <Box display="flex">
@@ -121,17 +119,17 @@ export default function AssignmentsCard({
                     <CardContent className={classes.text}>
                         
                         {
-                            (content !== undefined)
+                            (description !== "")
                             ? (
                             <Typography paragraph="paragraph">
-                                {content}
+                                {description}
                             </Typography>):
                             (<></>)
                         }
                         
 
                         {
-                            (contentLink !== undefined)
+                            (moreDetailsLink !== "")
                                 ? (
                                     <Typography paragraph="paragraph">More Details:
                                         <Button
@@ -141,7 +139,7 @@ export default function AssignmentsCard({
                                                 color:color
                                             }}
                                             onClick={() => {
-                                                window.open(contentLink)
+                                                window.open(moreDetailsLink)
                                             }}
                                             variant="outlined"
                                             >
@@ -153,7 +151,7 @@ export default function AssignmentsCard({
                         }
 
                         {
-                            (submitLink !== undefined)
+                            (submitLink !== "")
                                 ? (
                                     <Typography paragraph="paragraph">Submit:
                                         <Button

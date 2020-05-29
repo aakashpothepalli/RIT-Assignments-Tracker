@@ -54,13 +54,11 @@ const useStyles = makeStyles((theme) => ({
 
 export default function ExamCard({
     subjectCode,
-    subjectName,
-    left,
+    title,
     date,
-    type,
     submitLink,
-    content,
-    contentLink
+    description,
+    moreDetailsLink
 }) {
     const classes = useStyles();
     const [expanded, setExpanded] = React.useState(false);
@@ -88,7 +86,7 @@ export default function ExamCard({
                     subjectCode
                 }
                 </Avatar>}
-                title={subjectName}/>
+                title={title}/>
 
             <Box display="flex">
                 <Box alignSelf="center" flexGrow={1} marginLeft={2}>
@@ -119,11 +117,11 @@ export default function ExamCard({
                 <CardContent className={classes.text}>
 
                     <Typography paragraph="paragraph">
-                        {content}
+                        {description}
                     </Typography>
 
                     {
-                        (contentLink !== undefined)
+                        (moreDetailsLink !== "")
                             ? (
                                 <Typography paragraph="paragraph">More Details:
                                     <Button
@@ -133,7 +131,7 @@ export default function ExamCard({
                                             color: color
                                         }}
                                         onClick={() => {
-                                            window.open(contentLink)
+                                            window.open(moreDetailsLink)
                                         }}
                                         variant="outlined">
                                         Click Here

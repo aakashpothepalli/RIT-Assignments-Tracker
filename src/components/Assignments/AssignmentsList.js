@@ -1,8 +1,42 @@
-import React from 'react';
+import React,{useEffect,useState} from 'react';
 import {Container, Grid} from '@material-ui/core';
 import AssignmentsCard from './AssignmentsCard';
+import {db} from "../../firebase"
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 function AssignmentsList(props) {
+
+    let [assignments,setAssignments] = useState(<CircularProgress/>)
+
+    useEffect(()=>{
+        db.collection("classCodes").doc("CS2B").collection('assignments').get()
+        .then(function(snapshot) {
+
+            let tempData = []
+            snapshot.docs.map(doc=>{
+
+                let data = doc.data()
+                let key = doc.id
+                tempData.push(
+                    <AssignmentsCard
+                        key={key}
+                        title={data.title??"No title given"}
+                        subjectCode={data.subjectCode??"NSCE"}
+                        deadline={data.deadline.toDate().toString().substring(0,24)??""}
+                        submitLink={data.submitLink??""}
+                        moreDetailsLink={data.moreDetailsLink??""}
+                        description={data.description??""}/>
+                )
+
+            })
+
+            setAssignments(tempData)
+
+        })
+        .catch(function(error) {
+            console.error("Error writing document: ", error);
+        });
+    },[])
     return (
         <Grid
             alignItems="center"
@@ -10,30 +44,8 @@ function AssignmentsList(props) {
             spacing={3}
             direction="column"
             justify="center">
-            <AssignmentsCard
-                key="1"
-                subjectName="FOC lab manual submission"
-                subjectCode="CS26"
-                deadline="30th may"
-                // type="test"
-                submitLink="https://forms.gle/T9fwBVMVHNTHED666"
-                contentLink="https://drive.google.com/file/d/1RmrunfV0JDFYMnPyztjXO083W6kjuLjY/view?usp=sharing"
-                content="
-                Write programs of sessions 7 to 12 , scan it and upload it to the given link
-                "/>
-
-            <AssignmentsCard
-            key="2"
-                subjectName="ED record submission"
-                subjectCode="AL21"
-                deadline="13th june"
-                type="assignment"
-                // submitLink="https://forms.gle/T9fwBVMVHNTHED666"
-                // contentLink="https://drive.google.com/file/d/12R8aDpbqJbLETejMbZZy_CsbUdzIkUw0/view?usp=sharing"
-                content="
-                    Link for questions and submission will be enabled soon
-                "/>
-     
+                
+            {assignments}
 
         </Grid>
     );
