@@ -1,6 +1,4 @@
-.App {
-  text-align: center;
-}
+
 
 .App-logo {
   height: 40vmin;
@@ -13,15 +11,12 @@
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.App {
+  background-color: #161625 !important;
+
+  min-height: 110vh; 
+  /* min-width: 110vh; */
+  margin:0;
 }
 
 .App-link {
@@ -35,4 +30,8 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.MuiCardHeader-subheader{
+  color:"#bdbdbd !important"
 }
