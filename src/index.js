@@ -3,10 +3,21 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import {MuiThemeProvider, createMuiTheme} from '@material-ui/core/styles';
+import {BrowserRouter as Router} from "react-router-dom"
+const theme = createMuiTheme({
+  typography: {
+      fontFamily: 'Quicksand'
+  }
+});
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <MuiThemeProvider theme={theme}>
+      <Router>
+        <App />
+      </Router>
+    </MuiThemeProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
