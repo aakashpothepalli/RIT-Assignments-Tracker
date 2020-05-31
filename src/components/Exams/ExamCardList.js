@@ -4,11 +4,11 @@ import ExamCard from './ExamCard';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import {db} from "../../firebase"
 
-function ExamCardList(props) {
+function ExamCardList({classCode}) {
     let [exams,setExams] = useState(<CircularProgress/>)
 
     useEffect(()=>{
-        db.collection("classCodes").doc("CS2B").collection('tests').get()
+        db.collection("classCodes").doc(classCode).collection('tests').orderBy("date").get()
         .then(function(snapshot) {
 
             let tempData = []
