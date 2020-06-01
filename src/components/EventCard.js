@@ -86,7 +86,7 @@ export default function EventCard({subjectCode, subjectName , left,deadline,type
         }
         // color="#bdbdbd"
 
-        title={subjectName}
+        title={<b>subjectName</b>}
         // subheader="Deadline - September 14, 2016"
       />
    

@@ -86,7 +86,7 @@ export default function ExamCard({
                         subjectCode
                     }
                 </Avatar>}
-                title={title} />
+                title={<b>{title}</b>} />
 
             <Box display="flex">
                 <Box alignSelf="center" flexGrow={1} marginLeft={2}>

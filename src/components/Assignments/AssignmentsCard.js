@@ -87,7 +87,7 @@ export default function AssignmentsCard({
                     }
                     </Avatar>}
 
-                    title={title}/>
+                    title={<b>{title}</b>}/>
 
               
                 <Box display="flex">
