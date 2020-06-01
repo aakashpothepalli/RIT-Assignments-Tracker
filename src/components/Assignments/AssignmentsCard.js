@@ -121,9 +121,16 @@ export default function AssignmentsCard({
                         {
                             (description !== "")
                             ? (
-                            <Typography paragraph="paragraph">
-                                {description}
-                            </Typography>):
+                                <Typography paragraph="paragraph" display="block">
+                                <pre style={{
+                                    color: "#bdbdbd",
+                                    fontFamily: 'Quicksand'
+        
+                                }}>
+                                    {description}
+                                </pre>
+                            </Typography>
+        ):
                             (<></>)
                         }
                         

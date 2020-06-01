@@ -122,7 +122,16 @@ export default function EventCard({subjectCode, subjectName , left,deadline,type
           <Typography paragraph>Date: {deadline}</Typography>
 
           <Typography paragraph>
-            {content}
+          <Typography paragraph="paragraph" display="block">
+                        <pre style={{
+                            color: "#bdbdbd",
+                            fontFamily: 'Quicksand'
+
+                        }}>
+                            {content}
+                        </pre>
+                    </Typography>
+
           </Typography>
           
           {(contentLink!==undefined)?(<Typography paragraph>Syllabus: 
