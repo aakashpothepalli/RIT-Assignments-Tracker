@@ -1,6 +1,6 @@
-import React, {useState} from 'react';
-import {makeStyles} from '@material-ui/core/styles';
-import {MuiThemeProvider, createMuiTheme} from '@material-ui/core/styles';
+import React, { useState } from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import clsx from 'clsx';
 import Box from "@material-ui/core/Box"
 import Card from '@material-ui/core/Card';
@@ -12,9 +12,9 @@ import Collapse from '@material-ui/core/Collapse';
 import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-import {deepOrange} from '@material-ui/core/colors';
+import { deepOrange } from '@material-ui/core/colors';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import {randomColor} from "randomcolor"
+import { randomColor } from "randomcolor"
 import "../../App.css"
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
         marginLeft: 'auto',
         transition: theme
             .transitions
-            .create('transform', {duration: theme.transitions.duration.shortest})
+            .create('transform', { duration: theme.transitions.duration.shortest })
     },
     expandOpen: {
         transform: 'rotate(180deg)'
@@ -75,7 +75,7 @@ export default function NoticeCard({
             className={clsx(classes.expand, {
                 [classes.expandOpen]: expanded
             }),
-            classes.root}
+                classes.root}
             onClick={handleExpandClick}>
 
             <CardHeader
@@ -86,7 +86,7 @@ export default function NoticeCard({
                 //     subjectCode
                 // }
                 // </Avatar>}
-                title={title}/>
+                title={<b>{title}</b>} />
 
             <Box display="flex">
                 <Box alignSelf="center" flexGrow={1} marginLeft={2}>
@@ -106,7 +106,7 @@ export default function NoticeCard({
                         onClick={handleExpandClick}
                         aria-expanded={expanded}
                         aria-label="show more">
-                        <ExpandMoreIcon/>
+                        <ExpandMoreIcon />
 
                     </IconButton>
                 </Box>
@@ -116,8 +116,14 @@ export default function NoticeCard({
             <Collapse in={expanded} timeout="auto" unmountOnExit="unmountOnExit">
                 <CardContent className={classes.text}>
 
-                    <Typography paragraph="paragraph">
-                        {description}
+                    <Typography paragraph="paragraph" display="block">
+                        <pre style={{
+                            color: "#bdbdbd",
+                            fontFamily: 'Quicksand'
+
+                        }}>
+                            {description}
+                        </pre>
                     </Typography>
 
                     {

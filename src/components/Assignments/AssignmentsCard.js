@@ -1,6 +1,6 @@
-import React, {useState} from 'react';
-import {makeStyles} from '@material-ui/core/styles';
-import {MuiThemeProvider, createMuiTheme} from '@material-ui/core/styles';
+import React, { useState } from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import clsx from 'clsx';
 import Box from "@material-ui/core/Box"
 import Card from '@material-ui/core/Card';
@@ -12,9 +12,9 @@ import Collapse from '@material-ui/core/Collapse';
 import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-import {deepOrange} from '@material-ui/core/colors';
+import { deepOrange } from '@material-ui/core/colors';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import {randomColor} from "randomcolor"
+import { randomColor } from "randomcolor"
 import "../../App.css"
 import { Grid } from '@material-ui/core';
 const useStyles = makeStyles((theme) => ({
@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
         marginLeft: 'auto',
         transition: theme
             .transitions
-            .create('transform', {duration: theme.transitions.duration.shortest})
+            .create('transform', { duration: theme.transitions.duration.shortest })
     },
     expandOpen: {
         transform: 'rotate(180deg)'
@@ -69,28 +69,28 @@ export default function AssignmentsCard({
     const handleExpandClick = () => {
         setExpanded(!expanded);
     };
-   
+
     return (
         <Card
-                className={clsx(classes.expand, {
-                    [classes.expandOpen]: expanded
-                }),
+            className={clsx(classes.expand, {
+                [classes.expandOpen]: expanded
+            }),
                 classes.root}
-                onClick={handleExpandClick}>
+            onClick={handleExpandClick}>
 
-                <CardHeader
-                    avatar={<Avatar aria-label = "Subject" className = {
-                        classes.avatar
-                    }
-                    style = {{backgroundColor:color}} > {
+            <CardHeader
+                avatar={<Avatar aria-label="Subject" className={
+                    classes.avatar
+                }
+                    style={{ backgroundColor: color }} > {
                         subjectCode
                     }
-                    </Avatar>}
+                </Avatar>}
 
-                    title={<b>{title}</b>}/>
+                title={<b>{title}</b>} />
 
-              
-                <Box display="flex">
+
+            <Box display="flex">
                 <Box alignSelf="center" flexGrow={1} marginLeft={2}>
 
                     {`Deadline : ${deadline}`}
@@ -108,80 +108,80 @@ export default function AssignmentsCard({
                         onClick={handleExpandClick}
                         aria-expanded={expanded}
                         aria-label="show more">
-                        <ExpandMoreIcon/>
+                        <ExpandMoreIcon />
 
                     </IconButton>
                 </Box>
 
             </Box>
 
-                <Collapse in={expanded} timeout="auto" unmountOnExit="unmountOnExit">
-                    <CardContent className={classes.text}>
-                        
-                        {
-                            (description !== "")
+            <Collapse in={expanded} timeout="auto" unmountOnExit="unmountOnExit">
+                <CardContent className={classes.text}>
+
+                    {
+                        (description !== "")
                             ? (
                                 <Typography paragraph="paragraph" display="block">
-                                <pre style={{
-                                    color: "#bdbdbd",
-                                    fontFamily: 'Quicksand'
-        
-                                }}>
-                                    {description}
-                                </pre>
-                            </Typography>
-        ):
+                                    <pre style={{
+                                        color: "#bdbdbd",
+                                        fontFamily: 'Quicksand'
+
+                                    }}>
+                                        {description}
+                                    </pre>
+                                </Typography>
+                            ) :
                             (<></>)
-                        }
-                        
+                    }
 
-                        {
-                            (moreDetailsLink !== "")
-                                ? (
-                                    <Typography paragraph="paragraph">More Details:
+
+                    {
+                        (moreDetailsLink !== "")
+                            ? (
+                                <Typography paragraph="paragraph">More Details:
                                         <Button
-                                            style={{
-                                                marginLeft: 10,
-                                                borderColor:color,
-                                                color:color
-                                            }}
-                                            onClick={() => {
-                                                window.open(moreDetailsLink)
-                                            }}
-                                            variant="outlined"
-                                            >
-                                            Click Here
+                                        style={{
+                                            marginLeft: 10,
+                                            borderColor: color,
+                                            color: color
+                                        }}
+                                        onClick={() => {
+                                            window.open(moreDetailsLink)
+                                        }}
+                                        variant="outlined"
+                                    >
+                                        Click Here
                                         </Button>
-                                    </Typography>
-                                )
-                                : (<></>)
-                        }
+                                </Typography>
+                            )
+                            : (<></>)
+                    }
 
-                        {
-                            (submitLink !== "")
-                                ? (
-                                    <Typography paragraph="paragraph">Submit:
+                    {
+                        (submitLink !== "")
+                            ? (
+                                <Typography paragraph="paragraph">Submit:
                                         <Button
-                                            style={{
-                                                marginLeft: 10,
-                                                borderColor:color,
-                                                color:color
-                                            }}
-                                            onClick={() => {
-                                                window.open(submitLink)
-                                            }}
-                                            variant="outlined"
-                                            >
-                                            Click Here
+                                        style={{
+                                            marginLeft: 10,
+                                            borderColor: color,
+                                            color: color
+                                        }}
+                                        onClick={() => {
+                                            window.open(submitLink)
+                                        }}
+                                        variant="outlined"
+                                    >
+                                        Click Here
                                         </Button>
-                                    </Typography>
-                                )
-                                : (<></>)
-                        }
+                                </Typography>
+                            )
+                            : (<></>)
+                    }
 
-                    </CardContent>
-                </Collapse>
-            </Card>
+                </CardContent>
+            </Collapse>
+        </Card>
 
     );
 }
