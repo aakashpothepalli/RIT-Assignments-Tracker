@@ -125,7 +125,14 @@ export default function EventCard({subjectCode, subjectName , left,deadline,type
           <Typography paragraph="paragraph" display="block">
                         <pre style={{
                             color: "#bdbdbd",
-                            fontFamily: 'Quicksand'
+                            fontFamily: 'Quicksand',
+                            overflowX: "auto",
+                            whiteSpace: "pre-wrap",
+                            whiteSpace: "-moz-pre-wrap",
+                            whiteSpace: "-pre-wrap",
+                            whiteSpace: "-o-pre-wrap",
+                            wordwrap: "break-word"
+
 
                         }}>
                             {content}

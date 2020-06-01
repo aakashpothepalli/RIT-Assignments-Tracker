@@ -119,7 +119,13 @@ export default function ExamCard({
                     <Typography paragraph="paragraph" display="block">
                         <pre style={{
                             color: "#bdbdbd",
-                            fontFamily: 'Quicksand'
+                            fontFamily: 'Quicksand',
+                            overflowX: "auto",
+                            whiteSpace: "pre-wrap",
+                            whiteSpace: "-moz-pre-wrap",
+                            whiteSpace: "-pre-wrap",
+                            whiteSpace: "-o-pre-wrap",
+                            wordwrap: "break-word"
 
                         }}>
                             {description}
