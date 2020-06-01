@@ -1,15 +1,14 @@
 import React,{useEffect,useState} from 'react';
 import {Container, Grid} from '@material-ui/core';
-import AssignmentsCard from './AssignmentsCard';
-import {db} from "../../firebase"
+import NoticeCard from './NoticeCard';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import {db} from "../../firebase"
 
-function AssignmentsList({classCode}) {
-
-    let [assignments,setAssignments] = useState(<CircularProgress/>)
+function NoticeCardList({classCode}) {
+    let [exams,setExams] = useState(<CircularProgress/>)
 
     useEffect(()=>{
-        db.collection("classCodes").doc(classCode).collection('assignments').orderBy("deadline").get()
+        db.collection("classCodes").doc(classCode).collection('notices').orderBy("date").get()
         .then(function(snapshot) {
 
             let tempData = []
@@ -17,12 +16,13 @@ function AssignmentsList({classCode}) {
 
                 let data = doc.data()
                 let key = doc.id
+
                 tempData.push(
-                    <AssignmentsCard
-                        key={key}
+                    <NoticeCard
+                        key ={key}
                         title={data.title??"No title given"}
                         subjectCode={data.subjectCode??"NSCE"}
-                        deadline={data.deadline.toDate().toString().substring(0,24)??""}
+                        date={data.date?.toDate().toString().substring(0,24)??""}
                         submitLink={data.submitLink??""}
                         moreDetailsLink={data.moreDetailsLink??""}
                         description={data.description??""}/>
@@ -30,13 +30,14 @@ function AssignmentsList({classCode}) {
 
             })
 
-            setAssignments(tempData)
+            setExams(tempData)
 
         })
         .catch(function(error) {
             console.error("Error writing document: ", error);
         });
     },[])
+
     return (
         <Grid
             alignItems="center"
@@ -44,11 +45,11 @@ function AssignmentsList({classCode}) {
             spacing={3}
             direction="column"
             justify="center">
-                
-            {assignments}
+                {exams}
+            
 
         </Grid>
     );
 }
 
-export default AssignmentsList;
+export default NoticeCardList;
